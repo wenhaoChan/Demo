@@ -8,6 +8,8 @@
 
 #import <XCTest/XCTest.h>
 
+#import <YYModel.h>
+
 @interface DemoTests : XCTestCase
 
 @end
@@ -23,6 +25,11 @@
 }
 
 - (void)testExample {
+    
+    NSDictionary* dic = @{@"app_name": @"shuangshuang",
+                          @"general-parameter" : @"general parameter value"
+                          };
+    NSString* json = [dic yy_modelToJSONString];
     // This is an example of a functional test case.
     // Use XCTAssert and related functions to verify your tests produce the correct results.
 }

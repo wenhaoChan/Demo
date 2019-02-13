@@ -1,0 +1,86 @@
+PODS:
+  - AFNetworking (3.2.1):
+    - AFNetworking/NSURLSession (= 3.2.1)
+    - AFNetworking/Reachability (= 3.2.1)
+    - AFNetworking/Security (= 3.2.1)
+    - AFNetworking/Serialization (= 3.2.1)
+    - AFNetworking/UIKit (= 3.2.1)
+  - AFNetworking/NSURLSession (3.2.1):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (3.2.1)
+  - AFNetworking/Security (3.2.1)
+  - AFNetworking/Serialization (3.2.1)
+  - AFNetworking/UIKit (3.2.1):
+    - AFNetworking/NSURLSession
+  - DZNEmptyDataSet (1.8.1)
+  - IQKeyboardManager (6.2.0)
+  - Masonry (1.1.0)
+  - MBProgressHUD (1.1.0)
+  - MJRefresh (3.1.15.7)
+  - ReactiveObjC (3.1.0)
+  - SDWebImage (4.4.3):
+    - SDWebImage/Core (= 4.4.3)
+  - SDWebImage/Core (4.4.3)
+  - SQLCipher (4.0.1):
+    - SQLCipher/standard (= 4.0.1)
+  - SQLCipher/common (4.0.1)
+  - SQLCipher/standard (4.0.1):
+    - SQLCipher/common
+  - WHC_ModelSqliteKit/SQLCipher (1.3.0):
+    - SQLCipher
+  - XMNetworking (1.1.0):
+    - AFNetworking (~> 3.0)
+  - YYCategories (1.0.4):
+    - YYCategories/no-arc (= 1.0.4)
+  - YYCategories/no-arc (1.0.4)
+  - YYModel (1.0.4)
+
+DEPENDENCIES:
+  - DZNEmptyDataSet (~> 1.8.1)
+  - IQKeyboardManager (~> 6.2.0)
+  - Masonry (~> 1.1.0)
+  - MBProgressHUD (~> 1.1.0)
+  - MJRefresh (~> 3.1.15.7)
+  - ReactiveObjC (~> 3.1.0)
+  - SDWebImage (~> 4.4.3)
+  - WHC_ModelSqliteKit/SQLCipher (~> 1.3.0)
+  - XMNetworking (~> 1.1.0)
+  - YYCategories (~> 1.0.0)
+  - YYModel (~> 1.0.4)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - AFNetworking
+    - DZNEmptyDataSet
+    - IQKeyboardManager
+    - Masonry
+    - MBProgressHUD
+    - MJRefresh
+    - ReactiveObjC
+    - SDWebImage
+    - SQLCipher
+    - WHC_ModelSqliteKit
+    - XMNetworking
+    - YYCategories
+    - YYModel
+
+SPEC CHECKSUMS:
+  AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
+  DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
+  IQKeyboardManager: 6194101620b73af5e67900b8f89707a99de0b804
+  Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
+  MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
+  MJRefresh: 697f8ec75ebdbe9207767bb682cf0f51b0d8a41f
+  ReactiveObjC: 2a38ea15335de4119d8b17caf1db1484f61db902
+  SDWebImage: c5594f1a19c48d526d321e548902b56b479cd508
+  SQLCipher: 4636a257060f6f1b4e143a143028b61a2b462d0d
+  WHC_ModelSqliteKit: dfafef3ee872dedd9823395291fc80bf37eac46d
+  XMNetworking: 7160cc06f504f325eec515a1e687ee1aa89bc462
+  YYCategories: 6bcd4314c6661a561410dce4a793379ebd306abd
+  YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
+
+PODFILE CHECKSUM: 64eaa6852316e8efc140489a5e041dcbd05ef389
+
+COCOAPODS: 1.6.0.beta.2
