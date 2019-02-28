@@ -22,6 +22,8 @@
 		DA41B24B220541650000C35B /* WHBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = DA41B24A220541650000C35B /* WHBaseView.m */; };
 		DA41B253220584180000C35B /* WHUser.m in Sources */ = {isa = PBXBuildFile; fileRef = DA41B252220584180000C35B /* WHUser.m */; };
 		DA41B256220585E60000C35B /* WHUserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DA41B255220585E60000C35B /* WHUserManager.m */; };
+		DA513A3C2223F37900484004 /* WHWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA513A3B2223F37900484004 /* WHWebViewController.m */; };
+		DA513C9A22268EF600484004 /* WHRefreshTool.m in Sources */ = {isa = PBXBuildFile; fileRef = DA513C9922268EF600484004 /* WHRefreshTool.m */; };
 		DA58303A2211193C0044ED3B /* MBProgressHUD+Tip.m in Sources */ = {isa = PBXBuildFile; fileRef = DA5830382211193C0044ED3B /* MBProgressHUD+Tip.m */; };
 		DA583042221173FD0044ED3B /* WHLoginViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DA583041221173FD0044ED3B /* WHLoginViewModel.m */; };
 		DA5830462211851A0044ED3B /* WHLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA5830442211851A0044ED3B /* WHLoginViewController.m */; };
@@ -94,6 +96,10 @@
 		DA41B252220584180000C35B /* WHUser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WHUser.m; sourceTree = "<group>"; };
 		DA41B254220585E60000C35B /* WHUserManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WHUserManager.h; sourceTree = "<group>"; };
 		DA41B255220585E60000C35B /* WHUserManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WHUserManager.m; sourceTree = "<group>"; };
+		DA513A3A2223F37900484004 /* WHWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WHWebViewController.h; sourceTree = "<group>"; };
+		DA513A3B2223F37900484004 /* WHWebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WHWebViewController.m; sourceTree = "<group>"; };
+		DA513C9822268EF600484004 /* WHRefreshTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WHRefreshTool.h; sourceTree = "<group>"; };
+		DA513C9922268EF600484004 /* WHRefreshTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WHRefreshTool.m; sourceTree = "<group>"; };
 		DA5830382211193C0044ED3B /* MBProgressHUD+Tip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+Tip.m"; sourceTree = "<group>"; };
 		DA5830392211193C0044ED3B /* MBProgressHUD+Tip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+Tip.h"; sourceTree = "<group>"; };
 		DA583040221173FD0044ED3B /* WHLoginViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WHLoginViewModel.h; sourceTree = "<group>"; };
@@ -196,6 +202,8 @@
 				DA41B22822044DD60000C35B /* WHBaseViewController.h */,
 				DA41B22922044DD60000C35B /* WHBaseViewController.m */,
 				DA41B231220450A20000C35B /* WHViewControllerProtocol.h */,
+				DA513A3A2223F37900484004 /* WHWebViewController.h */,
+				DA513A3B2223F37900484004 /* WHWebViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -281,6 +289,7 @@
 		DA41B2372204527B0000C35B /* Public */ = {
 			isa = PBXGroup;
 			children = (
+				DA513C9722268ED700484004 /* RefreshTool */,
 				DA41B250220583EE0000C35B /* UserInfo */,
 				DA41B23C220453F60000C35B /* View */,
 			);
@@ -338,6 +347,15 @@
 				DA41B255220585E60000C35B /* WHUserManager.m */,
 			);
 			path = UserInfo;
+			sourceTree = "<group>";
+		};
+		DA513C9722268ED700484004 /* RefreshTool */ = {
+			isa = PBXGroup;
+			children = (
+				DA513C9822268EF600484004 /* WHRefreshTool.h */,
+				DA513C9922268EF600484004 /* WHRefreshTool.m */,
+			);
+			path = RefreshTool;
 			sourceTree = "<group>";
 		};
 		DA5830372211193C0044ED3B /* MBProgressHUD */ = {
@@ -698,6 +716,7 @@
 				DA41B253220584180000C35B /* WHUser.m in Sources */,
 				DA41B256220585E60000C35B /* WHUserManager.m in Sources */,
 				DA6E855021B6141500B2EB12 /* ViewController.m in Sources */,
+				DA513A3C2223F37900484004 /* WHWebViewController.m in Sources */,
 				DA41B22A22044DD60000C35B /* WHBaseViewController.m in Sources */,
 				DA41B21C220449960000C35B /* WHStartApp.m in Sources */,
 				DA41B22722044DB10000C35B /* WHNavigationViewController.m in Sources */,
@@ -706,6 +725,7 @@
 				DA6E854D21B6141500B2EB12 /* AppDelegate.m in Sources */,
 				DA5830462211851A0044ED3B /* WHLoginViewController.m in Sources */,
 				DA41B22422044D940000C35B /* WHTabBarViewController.m in Sources */,
+				DA513C9A22268EF600484004 /* WHRefreshTool.m in Sources */,
 				DA41B22D22044DEA0000C35B /* WHBaseViewModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

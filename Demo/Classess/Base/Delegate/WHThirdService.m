@@ -59,7 +59,7 @@
 
 #pragma mark - 配置 Bugly
 
-- (void)wh_setupBugly
++ (void)wh_setupBugly
 {
 //    [Bugly startWithAppId:kBuglyAppKey];
 }
