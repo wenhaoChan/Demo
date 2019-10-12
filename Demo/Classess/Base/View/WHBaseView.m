@@ -14,8 +14,8 @@
 {
     self = [super init];
     if (self) {
-        [self yd_setupViews];
-        [self yd_bindViewModel];
+        [self wh_setupViews];
+        [self wh_bindViewModel];
     }
     return self;
 }
@@ -25,17 +25,17 @@
 {
     self = [super init];
     if (self) {
-        [self yd_setupViews];
-        [self yd_bindViewModel];
+        [self wh_setupViews];
+        [self wh_bindViewModel];
     }
     return self;
 }
 
 
-- (void)yd_bindViewModel{}
+- (void)wh_bindViewModel{}
 
 
-- (void)yd_setupViews {}
+- (void)wh_setupViews {}
 
 
 @end

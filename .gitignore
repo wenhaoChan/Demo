@@ -17,6 +17,9 @@ DerivedData/
 !default.perspectivev3
 xcuserdata/
 
+xcuserdata/
+.xcuserstate
+
 ## Other
 *.moved-aside
 *.xccheckout
@@ -30,6 +33,8 @@ xcuserdata/
 
 .DS_Store
 */.DS_Store
+
+
 
 # CocoaPods
 #

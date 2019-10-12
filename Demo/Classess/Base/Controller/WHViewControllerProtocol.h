@@ -29,14 +29,8 @@
 - (void)wh_addSubviews;
 
 /**
- *  设置 navation
- */
-- (void)wh_layoutNavigation;
-
-/**
  *  初次获取数据
  */
 - (void)wh_getNewData;
-
 
 @end

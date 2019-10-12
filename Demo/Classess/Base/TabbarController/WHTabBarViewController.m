@@ -15,8 +15,9 @@
 // ViewModels
 
 // Controllers
-#import "ViewController.h"
+#import "WHViewController.h"
 #import "WHNavigationViewController.h"
+
 // Others
 
 @interface WHTabBarViewController ()
@@ -31,28 +32,25 @@
     
     self.tabBar.tintColor = ColorFromRGB(0x767676);
     
-    [UITabBar appearance].backgroundColor = [UIColor whiteColor];
+//    [UITabBar appearance].backgroundColor = [UIColor whiteColor];
     
-    [UITabBar appearance].translucent = NO;
+//    [UITabBar appearance].translucent = NO;
     
-    self.tabBar.shadowImage = [UIImage new];
+//    self.tabBar.shadowImage = [UIImage new];
     
-    [self setupSubControllers];
-    // Do any additional setup after loading the view.
+    [self createControllers];
 }
 
-
-- (void)setupSubControllers
+- (void)createControllers
 {
-    WHNavigationViewController* rvc = [self addChildVC:[ViewController new] withTitle:@"匹配" image:@"tab1" selectedImage:@"tab1-selected"];
+    WHNavigationViewController* rvc = [self addChildVC:[WHViewController new] withTitle:@"匹配" image:@"tab1" selectedImage:@"tab1-selected"];
     
-    WHNavigationViewController* mvc = [self addChildVC:[ViewController new] withTitle:@"红包" image:@"tab22" selectedImage:@"tab22-selected"];
+    WHNavigationViewController* mvc = [self addChildVC:[WHViewController new] withTitle:@"红包" image:@"tab22" selectedImage:@"tab22-selected"];
     
-    WHNavigationViewController* cvc = [self addChildVC:[ViewController new] withTitle:@"聊天" image:@"tab3" selectedImage:@"tab3-selected"];
+    WHNavigationViewController* cvc = [self addChildVC:[WHViewController new] withTitle:@"聊天" image:@"tab3" selectedImage:@"tab3-selected"];
 
     self.viewControllers = @[rvc, mvc, cvc];
 }
-
 
 - (WHNavigationViewController *)addChildVC:(UIViewController *)childVC withTitle:(NSString *)title image:(NSString *)image selectedImage:(NSString *)selectedImage
 {
@@ -62,6 +60,5 @@
     WHNavigationViewController *nvc = [[WHNavigationViewController alloc] initWithRootViewController:childVC];
     return nvc;
 }
-
 
 @end

@@ -15,19 +15,31 @@ PODS:
   - AFNetworking/UIKit (3.2.1):
     - AFNetworking/NSURLSession
   - DZNEmptyDataSet (1.8.1)
-  - IQKeyboardManager (6.2.0)
+  - IQKeyboardManager (6.5.0)
   - Masonry (1.1.0)
   - MBProgressHUD (1.1.0)
-  - MJRefresh (3.1.15.7)
-  - ReactiveObjC (3.1.0)
-  - SDWebImage (4.4.3):
-    - SDWebImage/Core (= 4.4.3)
-  - SDWebImage/Core (4.4.3)
-  - SQLCipher (4.0.1):
-    - SQLCipher/standard (= 4.0.1)
-  - SQLCipher/common (4.0.1)
-  - SQLCipher/standard (4.0.1):
+  - MJRefresh (3.2.0)
+  - ReactiveObjC (3.1.1)
+  - SDCycleScrollView (1.80):
+    - SDWebImage (>= 5.0.0)
+  - SDWebImage (5.2.3):
+    - SDWebImage/Core (= 5.2.3)
+  - SDWebImage/Core (5.2.3)
+  - SQLCipher (4.2.0):
+    - SQLCipher/standard (= 4.2.0)
+  - SQLCipher/common (4.2.0)
+  - SQLCipher/standard (4.2.0):
     - SQLCipher/common
+  - UMCCommon (2.1.1)
+  - UMCCommonLog (1.0.0)
+  - UMCShare/Core (6.9.6):
+    - UMCCommon
+  - UMCShare/Social/ReducedWeChat (6.9.6):
+    - UMCCommon
+    - UMCShare/Core
+  - UMCShare/UI (6.9.6):
+    - UMCCommon
+    - UMCShare/Core
   - WHC_ModelSqliteKit/SQLCipher (1.3.0):
     - SQLCipher
   - XMNetworking (1.1.0):
@@ -38,20 +50,24 @@ PODS:
   - YYModel (1.0.4)
 
 DEPENDENCIES:
-  - DZNEmptyDataSet (~> 1.8.1)
-  - IQKeyboardManager (~> 6.2.0)
-  - Masonry (~> 1.1.0)
-  - MBProgressHUD (~> 1.1.0)
-  - MJRefresh (~> 3.1.15.7)
-  - ReactiveObjC (~> 3.1.0)
-  - SDWebImage (~> 4.4.3)
-  - WHC_ModelSqliteKit/SQLCipher (~> 1.3.0)
-  - XMNetworking (~> 1.1.0)
-  - YYCategories (~> 1.0.0)
-  - YYModel (~> 1.0.4)
+  - DZNEmptyDataSet
+  - IQKeyboardManager
+  - Masonry
+  - MBProgressHUD
+  - MJRefresh
+  - ReactiveObjC
+  - SDCycleScrollView
+  - SDWebImage
+  - UMCCommonLog
+  - UMCShare/Social/ReducedWeChat
+  - UMCShare/UI
+  - WHC_ModelSqliteKit/SQLCipher
+  - XMNetworking
+  - YYCategories
+  - YYModel
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  trunk:
     - AFNetworking
     - DZNEmptyDataSet
     - IQKeyboardManager
@@ -59,8 +75,12 @@ SPEC REPOS:
     - MBProgressHUD
     - MJRefresh
     - ReactiveObjC
+    - SDCycleScrollView
     - SDWebImage
     - SQLCipher
+    - UMCCommon
+    - UMCCommonLog
+    - UMCShare
     - WHC_ModelSqliteKit
     - XMNetworking
     - YYCategories
@@ -69,18 +89,22 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
-  IQKeyboardManager: 6194101620b73af5e67900b8f89707a99de0b804
+  IQKeyboardManager: 700e5155d6a292383b54e8678aec769e14fc78fc
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
-  MJRefresh: 697f8ec75ebdbe9207767bb682cf0f51b0d8a41f
-  ReactiveObjC: 2a38ea15335de4119d8b17caf1db1484f61db902
-  SDWebImage: c5594f1a19c48d526d321e548902b56b479cd508
-  SQLCipher: 4636a257060f6f1b4e143a143028b61a2b462d0d
+  MJRefresh: ed450d6eb9d3346a2cb033ab7eb6de090aeef437
+  ReactiveObjC: 011caa393aa0383245f2dcf9bf02e86b80b36040
+  SDCycleScrollView: b3c9a5ed840c771c4938978174c7c9d9feefeb96
+  SDWebImage: 46a7f73228f84ce80990c786e4372cf4db5875ce
+  SQLCipher: 0187a2180ac288ea686b670b7141da62cd013b16
+  UMCCommon: 971f324a5a99c9d662ae040a815e7e3d7ef8b2a8
+  UMCCommonLog: 05a2d5de21858e3d870551562cff405c1366d244
+  UMCShare: e0cef55c0fd6051254c8cda1d0630eb578b27bad
   WHC_ModelSqliteKit: dfafef3ee872dedd9823395291fc80bf37eac46d
   XMNetworking: 7160cc06f504f325eec515a1e687ee1aa89bc462
   YYCategories: 6bcd4314c6661a561410dce4a793379ebd306abd
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
 
-PODFILE CHECKSUM: 64eaa6852316e8efc140489a5e041dcbd05ef389
+PODFILE CHECKSUM: 24b4b44774f55f1d72399facba1a44517e781a51
 
-COCOAPODS: 1.6.0.beta.2
+COCOAPODS: 1.8.3

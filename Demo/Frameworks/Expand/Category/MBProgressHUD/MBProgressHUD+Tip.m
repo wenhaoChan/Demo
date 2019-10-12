@@ -22,13 +22,15 @@
     [view bringSubviewToFront:hud];
     
     hud.removeFromSuperViewOnHide = YES;
-    if (delay > 0) {
-        [hud hideAnimated:YES afterDelay:delay];
+    
+    if (delay != 999) {
+       [hud hideAnimated:YES afterDelay:delay > 0 ? delay : 30];
     }
     
     hud.contentColor = [UIColor whiteColor];
-    hud.bezelView.color = [[UIColor blackColor] colorWithAlphaComponent:.5];
+    hud.bezelView.color = [UIColor blackColor];
     
+    hud.minShowTime = 1;
     hud.label.numberOfLines = 0;
     hud.label.text = message ? : @"数据加载中";
     hud.label.font = [UIFont systemFontOfSize:14.f];
@@ -36,34 +38,13 @@
     return hud;
 }
 
-
-//+ (MBProgressHUD *)showHUDByMessage:(NSString *)message displayTime:(NSTimeInterval)delay
-//{
-//    if (!message) {
-//        message = @"";
-//    }
-////    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:[[UIApplication sharedApplication] keyWindow] animated:YES];
-//    dispatch_async(dispatch_get_main_queue(), ^{
-//
-//        MBProgressHUD* hud = [self hud:[[UIApplication sharedApplication] keyWindow] message:message displayTime:<#(NSTimeInterval)#>];
-//
-////        hud.bezelView.color = [UIColor blackColor];
-////        hud.contentColor = [UIColor whiteColor];
-////        hud.label.text = message;
-////        hud.label.numberOfLines = 0;
-//////        hud.detailsLabel.text = message;
-////        hud.label.font = [UIFont systemFontOfSize:14.f];
-////        hud.mode = MBProgressHUDModeCustomView;
-////        hud.removeFromSuperViewOnHide = YES;
-////        hud.square = YES;
-////        CGFloat margin = 92 ;  // 距离底部的距离
-////        CGFloat offSetY = SCREEN_HEIGHT / 2 - margin;
-////        hud.offset = CGPointMake(0, offSetY);
-////        hud.centerX = SCREEN_WIDTH * .5;
-//
-//    });
-//     return hud;
-//}
++ (void)showMessage:(NSString *)message after:(NSTimeInterval)sec
+{
+    dispatch_after(dispatch_time_delay(sec), dispatch_get_main_queue(), ^{
+        MBProgressHUD* hud = [self hud:nil message:message ?: @"" displayTime:sec];
+        hud.mode = MBProgressHUDModeText;
+    });
+}
 
 + (void)showMessage:(NSString *)message
 {
@@ -73,6 +54,14 @@
     });
 }
 
++ (void)showMessage:(NSString *)message stayTime:(NSTimeInterval)time
+{
+    dispatch_async_on_main_queue(^{
+        MBProgressHUD* hud = [self hud:nil message:message ?: @"" displayTime:1];
+        hud.minShowTime = time;
+        hud.mode = MBProgressHUDModeText;
+    });
+}
 
 + (void)showMessage:(NSString *)message image:(UIImage *)image displayTime:(NSTimeInterval)delay inView:(UIView *)view
 {
@@ -94,9 +83,7 @@
         hud.bezelView.layer.cornerRadius = 12.0;
         hud.square = YES;
         
-        if (delay > 0) {
-            [hud hideAnimated:YES afterDelay:delay];
-        }
+         [hud hideAnimated:YES afterDelay:delay > 0 ? delay : 30];
         
         UIImageView* imageView = [[UIImageView alloc] initWithImage:image ?: Image(@"logo")];
         imageView.contentMode = UIViewContentModeScaleAspectFit;
@@ -105,7 +92,6 @@
         hud.customView = imageView;
     });
 }
-
 
 + (void)showSuccessMessage:(NSString *)message
 {
@@ -118,7 +104,6 @@
 //     [self showMessage:message image:Image(@"creation_ico_savefailed") displayTime:1.f];
 }
 
-
 #pragma mark - 加载等待提示
 
 + (void)showLoading:(NSString *)message onView:(UIView *)view
@@ -126,12 +111,14 @@
     dispatch_async_on_main_queue(^{
         [self hud:view message:message ?: @"数据加载中" displayTime:0];
     });
-    
-//    dispatch_async_on_main_queue(^{
-//        [self hud:view message:message ?: @"数据加载中" displayTime:0];
-//    });
 }
 
++ (void)showLoadingOnWindowWithMessage:(NSString *)message
+{
+    dispatch_async_on_main_queue(^{
+        [self hud:nil message:message ?: @"数据加载中" displayTime:999];
+    });
+}
 
 + (void)hideMBProgressHUD:(UIView *)view
 {
@@ -143,7 +130,23 @@
     });
 }
 
-
++ (MBProgressHUD *)db_showProgressToView:(UIView *)view
+                                 message:(NSString *)message
+                             configBlock:(WHHUDConfigBlock)configBlock
+{
+    if (!view) {
+        view = [[UIApplication sharedApplication] keyWindow];
+    }
+    MBProgressHUD* hud = [MBProgressHUD showHUDAddedTo:view animated:YES];
+    hud.contentColor = WHTopicColor;
+    hud.bezelView.color = [UIColor blackColor];
+    hud.label.text = message ? : @"上传中...";
+    hud.mode = MBProgressHUDModeAnnularDeterminate;
+    if (configBlock) {
+        configBlock(hud);
+    }
+    return hud;
+}
 
 @end
 

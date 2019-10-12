@@ -10,26 +10,6 @@
 
 @implementation WHUser
 
-+ (NSArray *)whc_IgnorePropertys
-{
-    return @[
-             ];
-}
-
-
-+ (NSString *)whc_SqlitePasswordKey
-{
-    return @"nje2h2gwq4ef3gerg";
-}
-
-
-
-
-
-
-
-
-
 - (void)setValue:(id)value forUndefinedKey:(NSString *)key
 {
     

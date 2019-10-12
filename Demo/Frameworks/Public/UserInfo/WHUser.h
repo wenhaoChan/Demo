@@ -8,11 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
-#import <WHC_ModelSqliteKit/WHC_ModelSqlite.h>
-
 NS_ASSUME_NONNULL_BEGIN
 
-@interface WHUser : NSObject<WHC_SqliteInfo>
+@interface WHUser : NSObject
 
 @property (nonatomic, copy) NSString* user_id;
 
@@ -23,7 +21,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString* avatar;
 
 @property (nonatomic, copy) NSString* mobile;
-
 
 @end
 

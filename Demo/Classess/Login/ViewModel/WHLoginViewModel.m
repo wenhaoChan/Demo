@@ -21,12 +21,10 @@
     }];
    
     _clickCodeCmd = [[RACCommand alloc] initWithSignalBlock:^RACSignal * _Nonnull(id input) {
-        
         return [RACSignal createSignal:^RACDisposable * _Nullable(id<RACSubscriber>  _Nonnull subscriber) {
-            
             [XMCenter sendRequest:^(XMRequest * _Nonnull request) {
-                request.api = @"/common/game/share_list";
-                request.parameters = @{@"app_name": @"shuangshuang"};
+                request.api = @"";
+                request.parameters = @{@"mobile": self.mobile};
             } onSuccess:^(id _Nullable responseObject) {
                 [subscriber sendNext:responseObject];
                 [subscriber sendCompleted];
@@ -37,24 +35,22 @@
             return [RACDisposable disposableWithBlock:^{
                 
             }];
-            
         }];
-        
     }];
     
-
      // 登录按钮
     _loginEnableSignal = [RACSignal combineLatest:@[RACObserve(self, mobile), RACObserve(self, smsCode)] reduce:^id(NSString* mobile, NSString* smsCode){
         return @(mobile.length >= 11 && smsCode.length >= 4);
     }];
     
     _clickLoginCmd = [[RACCommand alloc] initWithSignalBlock:^RACSignal * _Nonnull(id input) {
-        
         return [RACSignal createSignal:^RACDisposable * _Nullable(id<RACSubscriber>  _Nonnull subscriber) {
-
             [XMCenter sendRequest:^(XMRequest * _Nonnull request) {
-                request.api = @"/common/game/share_list";
-                request.parameters = @{@"app_name": @"shuangshuang"};
+                request.api = @"";
+                request.parameters = @{
+                    @"mobile" : self.mobile,
+                    @"code" : self.smsCode
+                };
             } onSuccess:^(id _Nullable responseObject) {
                 [subscriber sendNext:[WHUser yy_modelWithJSON:responseObject]];
                 [subscriber sendCompleted];
@@ -63,13 +59,9 @@
             }];
             
             return [RACDisposable disposableWithBlock:^{
-                
             }];
-            
         }];
-        
     }];
-    
     
     [[_clickLoginCmd.executing skip:1] subscribeNext:^(NSNumber * _Nullable x) {
         if ([x boolValue]) {
@@ -80,19 +72,8 @@
     }];
     
     [_clickLoginCmd.executionSignals.switchToLatest subscribeNext:^(WHUser* _Nullable x) {
-
+        UserManager.user = x;
         [MBProgressHUD showMessage:@"登录成功"];
-        
-        if ([[WHUserManager manager] updateUserDataToDB:x]) {
-//            [UIView animateKeyframesWithDuration:1.f delay:0 options:(UIViewKeyframeAnimationOptionOverrideInheritedOptions) animations:^{
-                 [[AppDelegate sharedDelegate] setupTabBarController];
-//            } completion:^(BOOL finished) {
-//
-//            }];
-        } else {
-            [MBProgressHUD showMessage:@"保存用户信息失败，请重新登录"];
-        }
-  
     } error:^(NSError * _Nullable error) {
         
     } completed:^{

@@ -19,12 +19,10 @@
  */
 + (AppDelegate *)sharedDelegate;
 
-
 /**
  初始化登录界面
  */
 - (void)setupLoginController;
-
 
 /**
  初始化 TabBarController

@@ -17,10 +17,9 @@
 // Controllers
 #import "WHLoginViewController.h"
 #import "WHTabBarViewController.h"
-// Others
-#import "WHStartApp.h"
-#import "WHThirdService.h"
 
+// Others
+#import "AppDelegate+Config.h"
 
 @interface AppDelegate ()
 
@@ -35,24 +34,19 @@
     return (AppDelegate *)[[UIApplication sharedApplication] delegate];
 }
 
-
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
     
-    if (![WHUserManager manager].user) {
-        [self setupTabBarController];
-    } else {
-        [self setupLoginController];
-    }
+    [self setupTabBarController];
     
     [self.window makeKeyAndVisible];
     
+    [self configThridService:application didFinishLaunchingWithOptions:launchOptions];
+    
     return YES;
 }
-
 
 #pragma mark - 初始化登录界面
 
@@ -61,7 +55,6 @@
     WHLoginViewController* vc = [[WHLoginViewController alloc] init];
     self.window.rootViewController = vc;
 }
-
 
 #pragma mark - 初始化 TabBarController
 
@@ -80,13 +73,13 @@
 
 
 
-
-
-
-
-
-
-
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey, id> *)options
+{
+    NSLog(@"openURL %@", url);
+    BOOL result = NO;
+    result =  [[UMSocialManager defaultManager] handleOpenURL:url options:options];
+    return result;
+}
 
 
 
@@ -97,6 +90,7 @@
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
+    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
 }
 
 

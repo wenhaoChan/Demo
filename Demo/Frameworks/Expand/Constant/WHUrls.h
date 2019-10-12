@@ -10,9 +10,9 @@
 #define WHUrls_h
 
 #ifdef DEBUG
-    static NSString * const API_Server = @"https://game.zuiqiangyingyu.net";
+    static NSString * const api_server = @"https://game.zuiqiangyingyu.net";
 #else
-    static NSString * const API_Server = @"";
+    static NSString * const api_server = @"";
 #endif
 
 #define API_VERSION @"1.2"  // api 版本号

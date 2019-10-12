@@ -17,30 +17,24 @@
 + (void)initialize
 {
     UINavigationBar *navigationBar = [UINavigationBar appearance];
-    //设置导航栏背景颜色
+    // 设置导航栏背景颜色
     [navigationBar setBarTintColor:[UIColor whiteColor]];
-    //设置标题栏颜色
-    navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:[UIColor blackColor],NSFontAttributeName : [UIFont systemFontOfSize:17]};
-    //设置 NavigationBarItem 文字的颜色
+    // 设置标题栏颜色
+    navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:[UIColor blackColor],
+                                          NSFontAttributeName : [UIFont systemFontOfSize:17]};
+    // 设置 NavigationBarItem 文字的颜色
     [navigationBar setTintColor:[UIColor whiteColor]];
 }
-
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    self.navigationBar.translucent = NO;
-    
+//    self.navigationBar.translucent = NO;
 //    self.navigationBar.shadowImage = [UIImage new];
-    
     if ([self respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
         self.interactivePopGestureRecognizer.delegate = nil;
     }
-    
-    // Do any additional setup after loading the view.
 }
-
 
 - (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated
 {
@@ -51,33 +45,24 @@
     [super pushViewController:viewController animated:animated];
 }
 
-
 - (NSArray<UIViewController *> *)popToRootViewControllerAnimated:(BOOL)animated
 {
     return [super popToRootViewControllerAnimated:animated];
 }
 
-
 - (UIViewController *)popViewControllerAnimated:(BOOL)animated
 {
-    //    self.interactivePopGestureRecognizer.enabled = YES;
     return [super popViewControllerAnimated:animated];
 }
-
 
 - (void)pop
 {
     [self popViewControllerAnimated:YES];
 }
 
-
 - (UIBarButtonItem *)creatBackButton
 {
     return [[UIBarButtonItem alloc]initWithImage:[[UIImage imageNamed:@"back"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]style:UIBarButtonItemStylePlain target:self action:@selector(pop)];
 }
-
-
-
-
 
 @end

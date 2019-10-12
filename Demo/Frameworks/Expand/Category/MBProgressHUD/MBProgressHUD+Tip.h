@@ -8,8 +8,9 @@
 
 #import <MBProgressHUD/MBProgressHUD.h>
 
-@interface MBProgressHUD (Tip)
+typedef void(^WHHUDConfigBlock)(MBProgressHUD *hud);
 
+@interface MBProgressHUD (Tip)
 
 /**
  返回一个自定义HUD
@@ -21,14 +22,16 @@
  */
 + (MBProgressHUD *)hud:(id)view message:(NSString *)message displayTime:(NSTimeInterval)delay;
 
-
 /**
- 只有信息的HUD
+ 只有信息的 HUD
 
  @param message 内容
  */
 + (void)showMessage:(NSString *)message;
 
++ (void)showMessage:(NSString *)message stayTime:(NSTimeInterval)time;
+
++ (void)showMessage:(NSString *)message after:(NSTimeInterval)sec;
 
 /**
  弹出一个带成功图标的HUD
@@ -37,14 +40,12 @@
  */
 + (void)showSuccessMessage:(NSString *)message;
 
-
 /**
  弹出一个带错误图标的HUD
 
  @param message 错误信息
  */
 + (void)showErrorMessage:(NSString *)message;
-
 
 /**
  自定义带图片 HUD
@@ -56,7 +57,6 @@
  */
 + (void)showMessage:(NSString *)message image:(UIImage *)image displayTime:(NSTimeInterval)delay inView:(UIView *)view;
 
-
 /**
  加载提示
 
@@ -65,6 +65,12 @@
  */
 + (void)showLoading:(NSString *)message onView:(UIView *)view;
 
+/**
+ 加载提示，不會自動消失
+
+ @param message 消息
+ */
++ (void)showLoadingOnWindowWithMessage:(NSString *)message;
 
 /**
  隐藏 MBProgressHUD
@@ -73,6 +79,16 @@
  */
 + (void)hideMBProgressHUD:(UIView *)view;
 
-
+/**
+ 文字 + 进度条
+     
+ @param view 要显示的视图
+ @param message 提示文字
+ @param configBlock 进度配置block
+ @return MBProgressHUD实例对象
+*/
++ (MBProgressHUD *)db_showProgressToView:(UIView *)view
+                                 message:(NSString *)message
+                             configBlock:(WHHUDConfigBlock)configBlock;
 
 @end

@@ -30,8 +30,6 @@
 
 @implementation WHLoginViewController
 
-
-
 #pragma mark - life cycles methods
 
 - (void)viewDidLoad
@@ -39,7 +37,6 @@
     [super viewDidLoad];
 
 }
-
 
 #pragma mark - private methods
 
@@ -58,7 +55,6 @@
 
 }
 
-
 - (void)wh_bindViewModel
 {
     self.loginViewModel = [[WHLoginViewModel alloc] init];
@@ -67,7 +63,6 @@
     RAC(self.loginViewModel, smsCode) = _smscodeTextField.rac_textSignal;
     
     WEAK
-    
     [self.loginViewModel.codeEnableSignal subscribeNext:^(id _Nullable x) {
         STRONG
         self.smsCodeButton.enabled = [x boolValue];
@@ -86,13 +81,6 @@
         [self countdown];
     }];
 }
-
-
-//- (void)wh_getNewData
-//{
-//    
-//}
-
 
 - (void)countdown
 {

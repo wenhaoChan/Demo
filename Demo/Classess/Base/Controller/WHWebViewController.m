@@ -38,38 +38,6 @@
 
 #pragma mark - life cycles methods
 
-- (void)loadView
-{
-    // 设置偏好设置
-    WKWebViewConfiguration *config = [[WKWebViewConfiguration alloc] init];
-    // 默认为0
-    config.preferences.minimumFontSize = 10;
-    //是否支持JavaScript
-    config.preferences.javaScriptEnabled = YES;
-    //不通过用户交互，是否可以打开窗口
-    config.preferences.javaScriptCanOpenWindowsAutomatically = NO;
-    config.processPool = [[WKProcessPool alloc] init];
-    
-    //    _wkConfig = [[WKWebViewConfiguration alloc] init];
-    //    _wkConfig.userContentController = [[WKUserContentController alloc] init];
-    //    [_wkConfig.userContentController addScriptMessageHandler:[[WeakScriptMessageDelegate alloc] initWithDelegate:self] name:@"contactCustomer"];
-    //    WKUserContentController *userCC = config.userContentController;
-    //JS调用OC 添加处理脚本
-    //    [userCC addScriptMessageHandler:self name:@"contactCustomer"];
-    
-    
-    _webView = [[WKWebView alloc] initWithFrame:CGRectZero configuration:config];
-    _webView.UIDelegate = self;
-    _webView.navigationDelegate = self;
-    self.webView.allowsBackForwardNavigationGestures = YES;
-    self.view = _webView;
-}
-
--(void)removeAllScriptMsgHandle
-{
-    //    [_wkConfig.userContentController removeScriptMessageHandlerForName:@"contactCustomer"];
-}
-
 - (void)dealloc
 {
     [self removeAllScriptMsgHandle];
@@ -80,11 +48,39 @@
     [super viewDidLoad];
     
     self.navigationItem.title = _webTitle ?: @"";
+}
+
+- (void)viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+    _webView.frame = self.view.bounds;
+}
+
+- (void)wh_addSubviews
+{
+    // 设置偏好设置
+    WKWebViewConfiguration *config = [[WKWebViewConfiguration alloc] init];
+    config.preferences.minimumFontSize = 15;
+    config.preferences.javaScriptCanOpenWindowsAutomatically = NO;
+    config.processPool = [[WKProcessPool alloc] init];
+    
+    //    _wkConfig = [[WKWebViewConfiguration alloc] init];
+    //    _wkConfig.userContentController = [[WKUserContentController alloc] init];
+    //    [_wkConfig.userContentController addScriptMessageHandler:[[WeakScriptMessageDelegate alloc] initWithDelegate:self] name:@"contactCustomer"];
+    //    WKUserContentController *userCC = config.userContentController;
+    //JS调用OC 添加处理脚本
+    //    [userCC addScriptMessageHandler:self name:@"contactCustomer"];
+    
+    _webView = [[WKWebView alloc] initWithFrame:CGRectZero configuration:config];
+    _webView.UIDelegate = self;
+    _webView.navigationDelegate = self;
+    _webView.allowsBackForwardNavigationGestures = YES;
+    [self.view addSubview:_webView];
+    
+    [self.view addSubview:self.myProgressView];
     
     NSURLRequest* request = [NSURLRequest requestWithURL:[NSURL URLWithString:_webUrl]];
     [_webView loadRequest:request];
-    
-    [self.view addSubview:self.myProgressView];
     
     WEAK
     [RACObserve(self.webView, estimatedProgress) subscribeNext:^(id  _Nullable x) {
@@ -108,13 +104,17 @@
 
 #pragma mark - private methods
 
+-(void)removeAllScriptMsgHandle
+{
+//    [_wkConfig.userContentController removeScriptMessageHandlerForName:@"contactCustomer"];
+}
+
 - (void)onBack:(id)sender
 {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - public methods
-
 
 
 #pragma mark - Event Response methods
@@ -126,12 +126,10 @@
 {
     NSLog(@"%@",NSStringFromSelector(_cmd));
     NSLog(@"%@",message.body);
-    
     if ([message.name isEqualToString:@"contactCustomer"]) {
 //        [self pushToCustomerService];
     }
 }
-
 
 #pragma mark - WKNavigationDelegate
 
@@ -141,13 +139,11 @@
     
 }
 
-
 // 当内容开始返回时调用
 - (void)webView:(WKWebView *)webView didCommitNavigation:(WKNavigation *)navigation
 {
     
 }
-
 
 // 页面加载完成之后调用
 - (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation
@@ -155,13 +151,11 @@
     
 }
 
-
 // 页面加载失败时调用
 - (void)webView:(WKWebView *)webView didFailProvisionalNavigation:(WKNavigation *)navigation
 {
     
 }
-
 
 // 接收到服务器跳转请求之后调用
 - (void)webView:(WKWebView *)webView didReceiveServerRedirectForProvisionalNavigation:(WKNavigation *)navigation
@@ -169,11 +163,9 @@
     
 }
 
-
 // 在收到响应后，决定是否跳转
 - (void)webView:(WKWebView *)webView decidePolicyForNavigationResponse:(WKNavigationResponse *)navigationResponse decisionHandler:(void (^)(WKNavigationResponsePolicy))decisionHandler
 {
-    
     NSLog(@"%@",navigationResponse.response.URL.absoluteString);
     //允许跳转
     decisionHandler(WKNavigationResponsePolicyAllow);
@@ -181,16 +173,16 @@
     //decisionHandler(WKNavigationResponsePolicyCancel);
 }
 
-
 // 在发送请求之前，决定是否跳转
 - (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler
 {
-    
-    NSLog(@"%@",navigationAction.request.URL.absoluteString);
+    NSLog(@"%@", navigationAction.request.URL.absoluteString);
+    // 如果是跳转一个新页面
+    if (navigationAction.targetFrame == nil) {
+        [webView loadRequest:navigationAction.request];
+    }
     //允许跳转
     decisionHandler(WKNavigationActionPolicyAllow);
-    //不允许跳转
-    //decisionHandler(WKNavigationActionPolicyCancel);
 }
 
 #pragma mark - WKUIDelegate
@@ -201,13 +193,11 @@
     return [[WKWebView alloc]init];
 }
 
-
 // 输入框
 - (void)webView:(WKWebView *)webView runJavaScriptTextInputPanelWithPrompt:(NSString *)prompt defaultText:(nullable NSString *)defaultText initiatedByFrame:(WKFrameInfo *)frame completionHandler:(void (^)(NSString * __nullable result))completionHandler
 {
     completionHandler(@"http");
 }
-
 
 // 确认框
 - (void)webView:(WKWebView *)webView runJavaScriptConfirmPanelWithMessage:(NSString *)message initiatedByFrame:(WKFrameInfo *)frame completionHandler:(void (^)(BOOL result))completionHandler
@@ -215,14 +205,12 @@
     completionHandler(YES);
 }
 
-
 // 警告框
 - (void)webView:(WKWebView *)webView runJavaScriptAlertPanelWithMessage:(NSString *)message initiatedByFrame:(WKFrameInfo *)frame completionHandler:(void (^)(void))completionHandler
 {
     NSLog(@"%@",message);
     completionHandler();
 }
-
 
 #pragma mark - getter
 
