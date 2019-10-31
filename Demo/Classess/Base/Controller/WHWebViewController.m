@@ -53,7 +53,7 @@
 - (void)viewDidLayoutSubviews
 {
     [super viewDidLayoutSubviews];
-    _webView.frame = self.view.bounds;
+    _webView.frame = self.view.frame;
 }
 
 - (void)wh_addSubviews

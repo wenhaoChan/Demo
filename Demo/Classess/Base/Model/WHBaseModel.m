@@ -10,5 +10,11 @@
 
 @implementation WHBaseModel
 
++ (NSDictionary *)modelCustomPropertyMapper
+{
+    return @{
+        @"whId" : @"id"
+    };
+}
 
 @end

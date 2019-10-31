@@ -26,8 +26,6 @@
 #import "MBProgressHUD+Tip.h"
 
 // 第三方库
-#import <Masonry.h>
-#import <YYModel/YYModel.h>
 #import <UIImageView+WebCache.h>
 #import <YYCategories/YYCategories.h>
 #import <ReactiveObjC/ReactiveObjC.h>

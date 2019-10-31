@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-#import "WHUser.h"
+@class WHUser;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -16,11 +16,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, readonly, getter=isLogin, assign) BOOL login;
 
-@property (nonatomic, strong) WHUser* user;
+@property (nonatomic, readonly, strong) WHUser* user;
 
 + (instancetype)manager;
 
 + (void)destroyInstance;
+
+- (void)setUser:(WHUser * _Nonnull)user;
 
 /**
  清除本地数据

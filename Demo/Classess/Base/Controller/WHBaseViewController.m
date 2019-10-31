@@ -38,8 +38,8 @@
 - (instancetype)initWithViewModel:(id<WHViewModelProtocol>)viewModel
 {
     self = [super init];
-    if (self) {
-    }
+    if (self == nil) return nil;
+    
     return self;
 }
 
@@ -54,8 +54,7 @@
 
 #pragma mark - RAC
 
-- (void)wh_addSubviews
-{}
+- (void)wh_addSubviews{}
 
 - (void)wh_bindViewModel {}
 

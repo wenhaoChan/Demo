@@ -8,6 +8,8 @@
 
 #import "WHUserManager.h"
 
+#import "WHUser.h"
+
 @interface WHUserManager()
 
 @property (nonatomic, readwrite, getter=isLogin, assign) BOOL login;
@@ -61,6 +63,14 @@ static id _manager = nil;
 - (BOOL)isLogin
 {
     return WHStringIsNotEmpty(_user.token);
+}
+
+
+#pragma mark - setter
+
+- (void)setUser:(WHUser * _Nonnull)user
+{
+    _user = user;
 }
 
 @end

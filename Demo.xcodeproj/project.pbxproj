@@ -650,7 +650,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = WH;
-				LastUpgradeCheck = 1010;
+				LastUpgradeCheck = 1110;
 				ORGANIZATIONNAME = zero;
 				TargetAttributes = {
 					DA6E854721B6141500B2EB12 = {

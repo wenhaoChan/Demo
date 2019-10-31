@@ -8,8 +8,7 @@
 
 #import "AppDelegate.h"
 
-#import <UMShare/UMShare.h>
-#import <UMCommon/UMCommon.h>
+#import <UMShare/UMSocialManager.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

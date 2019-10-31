@@ -13,13 +13,13 @@
 static int const kTopicColor = 0xEA5500;
 
 /** 背景色 */
-static int const kBgColor = 0xFFFFFF;
+static int const kBgColor   = 0xFFFFFF;
 
-static int const k333Color = 0x333333;
+static int const k333Color  = 0x333333;
 
-static int const k666Color = 0x666666;
+static int const k666Color  = 0x666666;
 
-static int const k999Color = 0x999999;
+static int const k999Color  = 0x999999;
 
 static int const kBBBColor = 0xBBBBBB;
 

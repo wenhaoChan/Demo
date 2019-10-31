@@ -16,6 +16,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, copy) NSString* smsCode;
 
+@property (nonatomic, assign) BOOL sending;
+
 @property (nonatomic, readonly, strong) RACSignal* codeEnableSignal;
 
 @property (nonatomic, readonly, strong) RACCommand* clickCodeCmd;
@@ -23,6 +25,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readonly, strong) RACSignal* loginEnableSignal;
 
 @property (nonatomic, readonly, strong) RACCommand* clickLoginCmd;
+
+@property (nonatomic, readonly, strong) RACCommand* platformLoginCmd;
 
 @end
 

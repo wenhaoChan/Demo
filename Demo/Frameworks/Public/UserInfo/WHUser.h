@@ -6,11 +6,11 @@
 //  Copyright © 2019 zero. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "WHBaseModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface WHUser : NSObject
+@interface WHUser : WHBaseModel
 
 @property (nonatomic, copy) NSString* user_id;
 

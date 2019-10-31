@@ -52,7 +52,9 @@ target 'Demo' do
   # 轮播
   pod 'SDCycleScrollView'
 
-
+  # 倒计时按钮
+  pod 'JKCountDownButton'
+  
   #pod 'FBSDKCoreKit'  
 
 #  pod 'Firebase/Analytics'

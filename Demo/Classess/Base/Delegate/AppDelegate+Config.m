@@ -8,7 +8,9 @@
 
 #import "AppDelegate+Config.h"
 
-#import <UShareUI/UShareUI.h>
+#import <UMCommon/UMConfigure.h>
+#import <UShareUI/UMSocialShareUIConfig.h>
+
 #import <XMNetworking/XMNetworking.h>
 #import <IQKeyboardManager/IQKeyboardManager.h>
 #import <AFNetworking/AFNetworkReachabilityManager.h>
@@ -115,8 +117,8 @@
     [[UMSocialManager defaultManager] removePlatformProviderWithPlatformTypes:@[@(UMSocialPlatformType_WechatFavorite),
                                                                                 @(UMSocialPlatformType_WechatTimeLine)]];
     
-    [UMSocialShareUIConfig shareInstance].shareTitleViewConfig.isShow = NO;
-    [UMSocialShareUIConfig shareInstance].shareCancelControlConfig.isShow = NO;
+//    [UMSocialShareUIConfig shareInstance].shareTitleViewConfig.isShow = NO;
+//    [UMSocialShareUIConfig shareInstance].shareCancelControlConfig.isShow = NO;
 }
 
 #pragma mark - 键盘回收相关

@@ -20,7 +20,6 @@
     return self;
 }
 
-
 - (instancetype)initWithViewModel:(id<WHViewModelProtocol>)viewModel
 {
     self = [super init];
@@ -31,11 +30,9 @@
     return self;
 }
 
-
 - (void)wh_bindViewModel{}
 
 
 - (void)wh_setupViews {}
-
 
 @end

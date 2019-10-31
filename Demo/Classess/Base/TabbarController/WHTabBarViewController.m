@@ -17,6 +17,7 @@
 // Controllers
 #import "WHViewController.h"
 #import "WHNavigationViewController.h"
+#import "WHLoginViewController.h"
 
 // Others
 
@@ -48,8 +49,10 @@
     WHNavigationViewController* mvc = [self addChildVC:[WHViewController new] withTitle:@"红包" image:@"tab22" selectedImage:@"tab22-selected"];
     
     WHNavigationViewController* cvc = [self addChildVC:[WHViewController new] withTitle:@"聊天" image:@"tab3" selectedImage:@"tab3-selected"];
+    
+    WHNavigationViewController* lvc = [self addChildVC:[WHLoginViewController new] withTitle:@"登录" image:@"tab3" selectedImage:@"tab3-selected"];
 
-    self.viewControllers = @[rvc, mvc, cvc];
+    self.viewControllers = @[rvc, mvc, cvc, lvc];
 }
 
 - (WHNavigationViewController *)addChildVC:(UIViewController *)childVC withTitle:(NSString *)title image:(NSString *)image selectedImage:(NSString *)selectedImage

@@ -23,11 +23,9 @@ typedef enum : NSUInteger {
 
 - (instancetype)initWithModel:(id)model;
 
-//@property (strong, nonatomic)CMRequest *request;
-
 /**
  *  初始化
  */
-- (void)yd_initialize;
+- (void)wh_initialize;
 
 @end

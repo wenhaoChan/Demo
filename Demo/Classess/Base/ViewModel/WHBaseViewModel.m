@@ -10,7 +10,6 @@
 
 @implementation WHBaseViewModel
 
-
 + (instancetype)allocWithZone:(struct _NSZone *)zone
 {
     WHBaseViewModel* viewModel = [super allocWithZone:zone];
@@ -20,16 +19,13 @@
     return viewModel;
 }
 
-
 - (instancetype)initWithModel:(id)model
 {
-    
     self = [super init];
     if (self) {
     }
     return self;
 }
-
 
 - (void)wh_initialize {}
 
